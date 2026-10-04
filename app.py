@@ -44,6 +44,29 @@ model = load_model()
 api_key = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key) if api_key else None
 
+# Custom CSS to make the file uploader vibrant and noticeable
+st.markdown(
+    """
+    <style>
+    /* Target the Streamlit file uploader dropzone */
+    [data-testid="stFileUploadDropzone"] {
+        border: 3px dashed #F59E0B !important; /* Vibrant amber/orange border */
+        background-color: rgba(245, 158, 11, 0.05) !important; /* Light amber background tint */
+        box-shadow: 0px 0px 20px rgba(245, 158, 11, 0.3) !important; /* Soft glow effect */
+        transition: all 0.3s ease-in-out;
+    }
+    
+    /* Enhance the glow when the user hovers over the upload box */
+    [data-testid="stFileUploadDropzone"]:hover {
+        background-color: rgba(245, 158, 11, 0.15) !important;
+        box-shadow: 0px 0px 25px rgba(245, 158, 11, 0.6) !important;
+        border-color: #D97706 !important; /* Darker orange on hover */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 uploaded_file = st.file_uploader("Upload an inspection image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
