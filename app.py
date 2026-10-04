@@ -6,12 +6,12 @@ import json
 from google import genai
 
 st.set_page_config(page_title="Solar Defect Inspector", layout="wide")
-import streamlit as st
-
-# Replace the old heading with the new one
 st.title("Solar Panels Infra-Inspection")
 
-# Add the explanation text directly below it
+# 1. Paste the uploader line right here
+uploaded_file = st.file_uploader("Upload an inspection image...", type=["jpg", "jpeg", "png"])
+
+# 2. Keep your text block below it
 st.markdown("""
 ### How It Is Used
 1. **Take a Picture:** A drone flies over the solar panels and takes a clear photo from above.
@@ -43,8 +43,6 @@ model = load_model()
 
 api_key = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key) if api_key else None
-
-uploaded_file = st.file_uploader("Upload an inspection image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
