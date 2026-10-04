@@ -6,7 +6,30 @@ import json
 from google import genai
 
 st.set_page_config(page_title="Solar Defect Inspector", layout="wide")
-st.title("☀️ Solar Infrastructure AI Inspector")
+import streamlit as st
+
+# Replace the old heading with the new one
+st.title("Solar Panels Infra-Inspection")
+
+# Add the explanation text directly below it
+st.markdown("""
+### How It Is Used
+1. **Take a Picture:** A drone flies over the solar panels and takes a clear photo from above.
+2. **Upload the Photo:** You upload that picture directly into the app.
+3. **Let the AI Work:** The app acts like a smart assistant, scanning the picture to instantly find any damaged areas.
+
+### Why It Is Used
+* **Saves Time:** Instead of a person walking around to check every single solar panel by hand, the system scans them all automatically. 
+* **Catches Problems Early:** It spots cracks, hot spots, or dirt before they turn into bigger, more expensive issues.
+* **Keeps Power Flowing:** By finding broken panels quickly, you can fix them and make sure the solar farm generates as much electricity as possible.
+
+### What Is the Outcome
+* **Highlighted Image:** You get your picture back, but with boxes drawn around the exact spots where the problems are.
+* **Simple Health Check:** A list explaining what kind of damage was found and how serious it is.
+* **Repair Plan:** Clear advice on which panels need to be cleaned or fixed first, so the maintenance team knows exactly where to go.
+""")
+
+# Your existing file upload code will go right below this...
 
 @st.cache_resource
 def load_model():
